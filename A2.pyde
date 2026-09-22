@@ -89,5 +89,4 @@ def mousePressed():
 
 def keyPressed():
     if key == 'r' or key == 'R':
-
-    else:
+        reset_game()
