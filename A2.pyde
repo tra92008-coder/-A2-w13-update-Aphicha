@@ -78,13 +78,17 @@ def mousePressed():
     global moves, game_over
     if game_over:
         return
-    else:
+    c = int((mouseX-OFFSET_X)/SPACING)
+    r = int((mouseY-OFFSET_Y)/SPACING)
         if 0 <= r < ROWS and 0 <= c < COLS:
+            moves += 1
+            toggle(r,c)
             if check_win():
+                game_over = True
 
-            else:
+            
 
-        else:
+        
 
 
 def keyPressed():
