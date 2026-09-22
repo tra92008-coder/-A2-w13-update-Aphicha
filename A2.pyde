@@ -90,3 +90,5 @@ def mousePressed():
 def keyPressed():
     if key == 'r' or key == 'R':
         reset_game()
+
+def flip(r, c):
