@@ -94,3 +94,11 @@ def keyPressed():
 def flip(r, c):
     if 0 <= r < ROWS and 0 <= c < COLS:
         grid[r][c] = 1 - grid[r][c]
+    
+def toggle(r, c):
+    global grid
+    flip(r, c)
+    flip(r - 1, c)
+    flip(r + 1, c)
+    flip(r, c - 1)
+    flip(r, c + 1)
