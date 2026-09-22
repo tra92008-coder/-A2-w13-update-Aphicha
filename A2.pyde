@@ -92,3 +92,5 @@ def keyPressed():
         reset_game()
 
 def flip(r, c):
+    if 0 <= r < ROWS and 0 <= c < COLS:
+        grid[r][c] = 1 - grid[r][c]
