@@ -56,6 +56,32 @@ def save_game():
     println("Saved to save.txt successfully!")
 
 
+def parse_grid_lines(lines, r, c):
+    if r >= ROWS:
+        return
+    tokens = lines[5 + r].strip().split()
+    grid[r][c] = int(tokens[c])
+    if c + 1 >= COLS:
+        parse_grid_lines(lines, r + 1, 0)
+    else:
+        parse_grid_lines(lines, r, c + 1)
+
+
+def load_game():
+    global moves, game_over
+    try:
+        f = open("save.txt", "r")
+        lines = f.readlines()
+        f.close()
+
+        moves = int(lines[1].strip())
+        game_over = (lines[3].strip() == "1")
+        parse_grid_lines(lines, 0, 0)
+        println("Loaded from save.txt successfully! Moves: " + str(moves))
+    except:
+        println("Failed to load or save.txt not found!")
+
+
 def draw_bulb(cx, cy, is_on):
     if is_on:
         fill(255, 200, 0)
@@ -117,3 +143,5 @@ def keyPressed():
         reset_game()
     elif key == 's' or key == 'S':
         save_game()
+    elif key == 'l' or key == 'L':
+        load_game()
