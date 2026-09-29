@@ -35,6 +35,27 @@ def check_win():
         return False
 
 
+def grid_to_text(r, c):
+    if r >= ROWS:
+        return ""
+    val = str(grid[r][c])
+    if c + 1 >= COLS:
+        return val + "\n" + grid_to_text(r + 1, 0)
+    else:
+        return val + " " + grid_to_text(r, c + 1)
+
+
+def save_game():
+    content = "count=\n" + str(moves) + "\n"
+    content += "check_win=\n" + ("1" if game_over else "0") + "\n"
+    content += "grid=\n" + grid_to_text(0, 0)
+    
+    f = open("save.txt", "w")
+    f.write(content)
+    f.close()
+    println("Saved to save.txt successfully!")
+
+
 def draw_bulb(cx, cy, is_on):
     if is_on:
         fill(255, 200, 0)
@@ -94,3 +115,5 @@ def mousePressed():
 def keyPressed():
     if key == 'r' or key == 'R':
         reset_game()
+    elif key == 's' or key == 'S':
+        save_game()
