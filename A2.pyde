@@ -25,9 +25,11 @@ def setup():
 
 def reset_game():
     global grid, moves, game_over, save_status
+    grid = [[0] * COLS for _ in range(ROWS)]
     moves = 0
     game_over = False
     save_status = "Not Saved"
+    scramble_board(8)
 
 
 def check_win():
