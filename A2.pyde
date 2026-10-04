@@ -173,3 +173,12 @@ def keyPressed():
         save_game()
     elif key == 'l' or key == 'L':
         load_game()
+
+
+def scramble_board(steps):
+    if steps <= 0:
+        return
+    r = random.randint(0, ROWS - 1)
+    c = random.randint(0, COLS - 1)
+    toggle(r, c)
+    scramble_board(steps - 1)
