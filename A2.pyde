@@ -33,10 +33,15 @@ def reset_game():
 
 
 def check_win():
-    if not any(1 in row for row in grid):
-        return True
-    else:
-        return False
+    r=0
+    while r<ROWS:
+        c=0
+        while c<COLS:
+            if grid[r][c] == 1:
+                return False
+            c+=1
+        r+=1
+    return True
 
 
 def grid_to_text(r, c):
